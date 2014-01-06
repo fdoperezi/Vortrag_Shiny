@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interactive Webapps with Shiny</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Interactive Webapps with Shiny">
+  <meta name="author" content="Dr. Simon Mueller">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/quiz/css/jquery-quiz.css"></link>
+<link rel=stylesheet href="libraries/widgets/interactive/css/aceeditor.css"></link>
+<link rel=stylesheet href="libraries/widgets/nvd3/css/nv.d3.css"></link>
+<link rel=stylesheet href="libraries/widgets/nvd3/css/rNVD3.css"></link>
+<link rel=stylesheet href="./assets/css/precode.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+<link rel=stylesheet href="./assets/css/slidesslide.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  <script src="libraries/widgets/nvd3/js/jquery-1.8.2.min.js"></script>
+<script src="libraries/widgets/nvd3/js/d3.v3.min.js"></script>
+<script src="libraries/widgets/nvd3/js/nv.d3.min-new.js"></script>
+<script src="libraries/widgets/nvd3/js/fisheye.js"></script>
+<script src="libraries/widgets/highcharts/js/jquery-1.9.1.min.js"></script>
+<script src="libraries/widgets/highcharts/js/highcharts.js"></script>
+<script src="libraries/widgets/highcharts/js/highcharts-more.js"></script>
+
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Interactive Webapps with Shiny</h1>
+    <h2>An Introduction</h2>
+    <p>Dr. Simon Mueller<br/>www.muon-stat.com</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Agenda</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><br></p>
+
+<ul>
+<li>Introduction</li>
+<li>Showcase</li>
+<li>Shiny
+
+<ul>
+<li>Structure</li>
+<li>Making an App</li>
+<li>Reactivity</li>
+</ul></li>
+<li> Shiny</li>
+<li>Showcases</li>
+<li>Sharing</li>
+<li>Acknowledgements</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Introduction: About</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><br>
+<strong>Me</strong></p>
+
+<ul>
+<li>Diplom Mathematician (2007)</li>
+<li>PhD in Stochastics (2011)
+<br>
+<br></li>
+</ul>
+
+<p><strong>Professional</strong></p>
+
+<ul>
+<li>2012 - 2013 Biostatistician at Dr. Margarete Fischer-Bosch Institute for Clinical Pharmacology</li>
+<li>2012 - today MUON-STAT - Statistical Services and Consultancy
+
+<ul>
+<li>Statistical Consulting </li>
+<li>Software &amp; Data Managment</li>
+<li>Training R, SPSS and Statistics</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <article data-timings="">
+    <p><img src="assets/img/rstudiologo.png"  style="float:right; padding-right:10px;padding-top:10px"/></p>
+
+<h2>Introduction: What is Shiny ?</h2>
+
+<p><br>
+Shiny is a R-package from <a href="http://www.rstudio.com/">RStudio Inc.</a> </p>
+
+<div style='float:left;width:75%;'>
+  <ul>
+<li>Originally developed my Joe Cheng</li>
+<li>Write interactive Web Applications Using (only) R</li>
+<li>no Need for HTML or Javascript for basic applications </li>
+<li><strong>Open-Source</strong> and <strong>Enterprise</strong> Version</li>
+<li>Many extensions from the R-Community (rCharts, a workaround for multiple pages, ...)</li>
+<li>Great for communication and vizualiation 
+
+<ul>
+<li>teaching</li>
+<li>interactive data analysis</li>
+<li>custom analytic tools to explore data</li>
+<li>interactive presentation of your statistical analysis</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:25%;'>
+  <div align='center' style='width:100%;margin-left:auto;margin-right:auto;padding-bottom:5px; float:right;'>
+  <img src="assets/img/joecheng.jpeg"/>
+</div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Introduction: Resources</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><br></p>
+
+<ul>
+<li><strong>Showcases</strong>
+
+<ul>
+<li><a href="http://www.rstudio.com/shiny/showcase/">http://www.rstudio.com/shiny/showcase/</a><br></li>
+</ul></li>
+<li><strong>Tutorial from RStudio</strong>
+
+<ul>
+<li><a href="http://rstudio.github.io/shiny/tutorial/">http://rstudio.github.io/shiny/tutorial/</a></li>
+</ul></li>
+<li><strong>Getting Help: Community</strong>
+
+<ul>
+<li><a href="https://groups.google.com/forum/#!forum/shiny-discuss">Google Shiny Group</a></li>
+<li><a href="http://stackoverflow.com/">Stackoverflow</a></li>
+</ul></li>
+<li><strong>Book</strong>
+
+<ul>
+<li><em>Web Application Development Using R With Shiny by Chris Beeley</em></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Showcase: Simple Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <div class="row-fluid">
+  <div class="span4">
+    <form class="well">
+      <div>
+        <label class="control-label" for="obs">Number of observations:</label>
+        <input id="obs" type="slider" name="obs" value="500" class="jslider" data-from="1" data-to="1000" data-step="1" data-skin="plastic" data-round="false" data-locale="us" data-format="#,##0.#####" data-smooth="false"/>
+      </div>
+      <label class="checkbox" for="density">
+        <input id="density" type="checkbox"/>
+        <span>Density</span>
+      </label>
+      <hr/>
+      <label for="Title">Title</label>
+      <input id="Title" type="text" value=""/>
+    </form>
+  </div>
+  <div class="span8">
+    <div id="distPlot" class="shiny-plot-output" style="width: 100% ; height: 400px"></div>
+  </div>
+</div>
+
+<ul>
+<li><p>Left side (<em>sidebar panel</em>) : <strong>inputs</strong> </p></li>
+<li><p>Right side (<em>main panel</em>) : <strong>outputs</strong></p></li>
+<li><p><em>Engine</em> : interface is running through two <strong>R</strong> files, namely <code>ui.R</code> and <code>server.R</code> </p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Shiny: Structure</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><br>
+A shiny app consists of two files:</p>
+
+<div style='float:left;width:66%;'>
+  <p><strong>ui.R</strong> (client side):</p>
+
+<ul>
+<li>User Interface</li>
+<li>Translation of the R-Code to a HTML webpage</li>
+</ul>
+
+<p><br><br>
+To run a shiny app:</p>
+
+<pre><code class="r" style="font-size:80%">library(shiny)
+shiny::runApp(AppPath)
+</code></pre>
+
+<p><code>AppPath</code> is the path that contains <code>ui.R</code> and <code>server.R</code></p>
+
+</div>
+<div style='float:right;width:33%;'>
+  <p><strong>server.R</strong> (server side):</p>
+
+<ul>
+<li>data analysis</li>
+<li>computation</li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Shiny: Structure</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:33%;'>
+  <p><strong>ui.R :</strong></p>
+
+<pre><code class="r" style="font-size:80%">shinyUI(pageWithSidebar(
+  headerPanel("app title"),
+  sidebarPanel(   
+    ***SET INPUTS*** 
+  ),
+  mainPanel(    
+    ***RENDER OUTPUTS***
+  )
+  
+))
+</code></pre>
+
+<ul>
+<li>Inputs are elements of the <code>input</code> list </li>
+<li>Outputs are elements of the <code>output</code> list </li>
+</ul>
+
+</div>
+<div style='float:right;width:66%;'>
+  <p><strong>server.R :</strong></p>
+
+<pre><code class="r" style="font-size:80%">shinyServer(function(input, output, session) {
+
+  ***GET INPUTS AND MAKE OUTPUTS*** 
+  
+})
+</code></pre>
+
+<p><strong>ui.R:</strong></p>
+
+<ul>
+<li><u><em>set input</em></u>: Inputs are set through the <em>widgets</em> in the interface:<br>
+<span style="border-style:solid;border-width:1px;border-color:yellow"><code>textInput(inputId=&quot;title&quot;, label=&quot;Title&quot;)</code></span> </li>
+<li><u><em>render output</em></u>: <span style="border-style:solid;border-width:1px;border-color:yellow"><code>plotOutput(&quot;plot&quot;)</code></li>
+</ul>
+
+<p><strong>server.R:</strong></p>
+
+<ul>
+<li><u><em>get input</em></u>:  <span style="border-style:solid;border-width:1px;border-color:yellow"><code>input$title</code></span> (or <span style="border-style:solid;border-width:1px;border-color:yellow"><code>input[[&quot;title&quot;]]</code></span>)</li>
+<li><u><em>make output</em></u>: <span style="border-style:solid;border-width:1px;border-color:yellow"><code>output$plot &lt;- renderPlot({ ... })</code></span></li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Shiny: Build-in Widgets</h2>
+  </hgroup>
+  <article data-timings="">
+    <div class="row-fluid">
+  <div class="span4">
+    <form class="well">
+      <div>
+        <label class="control-label" for="integer">Integer:</label>
+        <input id="integer" type="slider" name="integer" value="500" class="jslider" data-from="0" data-to="1000" data-step="1" data-skin="plastic" data-round="false" data-locale="us" data-format="#,##0.#####" data-smooth="false"/>
+      </div>
+      <div>
+        <label class="control-label" for="decimal">Decimal:</label>
+        <input id="decimal" type="slider" name="decimal" value="0.5" class="jslider" data-from="0" data-to="1" data-step="0.1" data-skin="plastic" data-round="false" data-locale="us" data-format="#,##0.#####" data-scale="|;|;|;|;|;|;|;|;|;|;|" data-smooth="false"/>
+      </div>
+      <div>
+        <label class="control-label" for="range">Range:</label>
+        <input id="range" type="slider" name="range" value="200;500" class="jslider" data-from="1" data-to="1000" data-step="1" data-skin="plastic" data-round="false" data-locale="us" data-format="#,##0.#####" data-smooth="false"/>
+      </div>
+      <label class="control-label" for="dataset">Choose a dataset:</label>
+      <select id="dataset">
+        <option value="rock" selected="selected">rock</option>
+        <option value="pressure">pressure</option>
+        <option value="cars">cars</option>
+      </select>
+      <label for="obsN">Number of observations to view:</label>
+      <input id="obsN" type="number" value="10"/>
+      <div id="rb" class="control-group shiny-input-radiogroup">
+        <label class="control-label" for="rb">Radio Buttons</label>
+        <label class="radio">
+          <input type="radio" name="rb" id="rb1" value="a" checked="checked"/>
+          <span>a</span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="rb" id="rb2" value="b"/>
+          <span>b</span>
+        </label>
+      </div>
+    </form>
+  </div>
+  <div class="span8">
+    <div id="values" class="shiny-html-output"></div>
+  </div>
+</div>
+
+<p>More widgets: check box, action button, date, date range, grouped check box and file upload.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Shiny: Making an App (1/3)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1></h1>
+
+<p><br>
+<strong>Step 1:</strong> Write your regular R-Code: </p>
+
+<div style='float:left;width:50%;'>
+  <pre><code class="r">distr &lt;- data.frame(distr = rnorm(n = 500))
+g &lt;- ggplot(distr, aes(x = distr)) + 
+    geom_histogram(aes(y = ..density..), 
+        fill = &quot;black&quot;, colour = &quot;white&quot;, 
+        ) + xlab(&quot;&quot;) + ylab(&quot;&quot;) + 
+    ggtitle(&quot;random sample&quot;) + geom_rangeframe()
+</code></pre>
+
+</div>
+<div style='float:right;width:50%;'>
+  <p><img src="assets/fig/unnamed-chunk-8.png" alt="plot of chunk unnamed-chunk-8"> </p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Shiny: Making an App (2/3)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1></h1>
+
+<p><br>
+<strong>Step 2:</strong> Embed code into shiny template:</p>
+
+<div style='float:left;width:90%;'>
+  <p><strong>ui.R :</strong></p>
+
+<pre><code class="r">  sidebarPanel(
+    sliderInput(&quot;obs&quot;, &quot;Number of observations:&quot;, min = 1, max = 1000, value = 500),
+    checkboxInput(&quot;density&quot;, &quot;Density&quot;, value=FALSE),
+    textInput(&quot;Title&quot;, label=&quot;Title&quot;, value=&quot;&quot;)),
+  mainPanel(
+    plotOutput(&quot;distPlot&quot;)
+  )
+</code></pre>
+
+</div>
+<div style='float:right;width:9%;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Shiny: Making an App (2/3)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1></h1>
+
+<p><br>
+<strong>Step 2:</strong> Embed code into shiny template:</p>
+
+<div style='float:left;width:90%;'>
+  <p><strong>server.R :</strong></p>
+
+<pre><code class="r">dist &lt;- rnorm(input$obs)
+dist &lt;- as.data.frame(dist)
+g &lt;- ggplot(dist, aes(x = dist)) + geom_histogram(aes(y = ..density..), 
+    fill = &quot;black&quot;, colour = &quot;white&quot;, ) + xlab(&quot;&quot;) + ylab(&quot;&quot;) + ggtitle(input$Title) + 
+    geom_rangeframe()
+if (input$density) {
+    g &lt;- g + geom_density(colour = &quot;steelblue&quot;, size = 1.25, alpha = 0.5)
+}
+print(g)
+</code></pre>
+
+</div>
+<div style='float:right;width:9%;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Shiny: Making an App (3/3)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1></h1>
+
+<p><br>
+<strong>Step 3:</strong> Run App:</p>
+
+<pre><code class="r">library(shiny)
+setwd(pathToApp)
+runApp()
+# Alternative: without starting default browser
+runApp(launch.browser = FALSE)
+</code></pre>
+
+<p><br>
+The app is now accessible at: <span style="border-style:solid;border-width:1px;border-color:yellow"><code>http://localhost:xxxx</code></span>  where <code>xxxx</code> is the port given in the <code>runApp()</code> message</p>
+
+<p><img alt="runApp" src="assets/img/runApp.png" width="65%"></p>
+
+<div style='float:left;width:;'>
+  
+</div>
+<div style='float:right;width:;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Shiny: Reactive Programming</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1></h1>
+
+<p><br>
+What is NOT reactive programming:</p>
+
+<pre><code class="r">a &lt;- 2
+b &lt;- 3
+c &lt;- a + b
+a &lt;- 4  # value of c do not change when value a is changed
+</code></pre>
+
+<p><br>
+reactive programming is:</p>
+
+<ul>
+<li>if value of <code>c</code> changes with <code>a</code> </li>
+<li>shiny is reactive</li>
+</ul>
+
+<div style='float:left;width:;'>
+  
+</div>
+<div style='float:right;width:;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Shiny: Reactive Programming</h2>
+  </hgroup>
+  <article data-timings="">
+    <h1></h1>
+
+<ul>
+<li>The output of the output object is <em>connected</em> to each input object and is <em>updated</em> each time an input object is changed.</li>
+<li>Let us have a look what happens when we <em>isolate</em> an input: <code>isolate(input$Title)</code></li>
+</ul>
+
+<div class="row-fluid">
+  <div class="span4">
+    <form class="well">
+      <div>
+        <label class="control-label" for="obs1">Number of observations:</label>
+        <input id="obs1" type="slider" name="obs1" value="500" class="jslider" data-from="1" data-to="1000" data-step="1" data-skin="plastic" data-round="false" data-locale="us" data-format="#,##0.#####" data-smooth="false"/>
+      </div>
+      <label class="checkbox" for="density1">
+        <input id="density1" type="checkbox"/>
+        <span>Density</span>
+      </label>
+      <hr/>
+      <label for="Title1">Title</label>
+      <input id="Title1" type="text" value=""/>
+    </form>
+  </div>
+  <div class="span8">
+    <div id="distPlot1" class="shiny-plot-output" style="width: 100% ; height: 400px"></div>
+  </div>
+</div>
+
+<ul>
+<li>What happens: the output is disconnected from <code>input$Title</code> and reads this value only when it reacts</li>
+</ul>
+
+<div style='float:left;width:;'>
+  
+</div>
+<div style='float:right;width:;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Shiny: Reactive Programming</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>All input parameters of the plot can be <em>isolated</em>, s.t. the user can select the parameters firstly</li>
+<li>The plot is then calculated by pressing a action button;
+<strong>ui.R</strong>:</li>
+</ul>
+
+<pre><code class="r">actionButton(inputId = &quot;plotButton&quot;, label = &quot;Plot&quot;)
+</code></pre>
+
+<p><strong>Server.R</strong>:</p>
+
+<pre><code class="r">if (input$plotButton == 0) {
+    return
+} else {
+    dist &lt;- rnorm(isolate(input$obsIso))
+
+    dist &lt;- as.data.frame(dist)
+    g &lt;- ggplot(dist, aes(x = dist)) + geom_histogram(aes(y = ..density..), 
+        fill = &quot;black&quot;, colour = &quot;white&quot;, ) + xlab(&quot;&quot;) + ylab(&quot;&quot;) + ggtitle(isolate(input$TitleIso)) + 
+        geom_rangeframe()
+    if (isolate(input$densityIso)) {
+        g &lt;- g + geom_density(colour = &quot;steelblue&quot;, size = 1.25, alpha = 0.5)
+    }
+    print(g)
+}
+</code></pre>
+
+<div style='float:left;width:;'>
+  
+</div>
+<div style='float:right;width:;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Shiny: Reactive Programming</h2>
+  </hgroup>
+  <article data-timings="">
+    <div class="row-fluid">
+  <div class="span4">
+    <form class="well">
+      <div>
+        <label class="control-label" for="obsIso">Number of observations:</label>
+        <input id="obsIso" type="slider" name="obsIso" value="500" class="jslider" data-from="1" data-to="1000" data-step="1" data-skin="plastic" data-round="false" data-locale="us" data-format="#,##0.#####" data-smooth="false"/>
+      </div>
+      <label class="checkbox" for="densityIso">
+        <input id="densityIso" type="checkbox"/>
+        <span>Density</span>
+      </label>
+      <hr/>
+      <label for="TitleIso">Title</label>
+      <input id="TitleIso" type="text" value=""/>
+      <hr/>
+      <button id="plotButton" type="button" class="btn action-button">Plot</button>
+    </form>
+  </div>
+  <div class="span8">
+    <div id="distPlotIso" class="shiny-plot-output" style="width: 100% ; height: 400px"></div>
+  </div>
+</div>
+
+<ul>
+<li><strong>Application</strong>: Time consuming tasks</li>
+</ul>
+
+<div style='float:left;width:;'>
+  
+</div>
+<div style='float:right;width:;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Shiny: Reactive Programming Advanced (1/5)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>In shiny are three kinds of reactive programming:</p>
+
+<ul>
+<li>reactive sources, reactive conductors, and reactive endpoints
+<p><img alt="Reactive conductor" src="assets/img/reactivity_diagrams/roles.png" width="75%"></p></li>
+</ul></li>
+<li><p>Until now, reactive source and reactive endpoints are used</p></li>
+<li><p><strong>Reactive Sources:</strong> typically user input through the html interface</p></li>
+<li><p><strong>Reactive Endpoints:</strong> something that appears in the users browser window: plots or tables</p></li>
+</ul>
+
+<p><br>
+Following Fibonacci example from the Rstudio Shiny tutorial explains how to use <strong>reactive conductors.</strong></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Shiny: Reactive Programming Advanced (2/5)</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:44%;'>
+  <ul>
+<li>A reactive conductor is a reactive component lying between a source and an endpoint:
+<p><img alt="Reactive conductor" src="assets/img/reactivity_diagrams/conductor.png" width="90%"></p></li>
+<li>It is defined in <strong>server.R</strong> with the <code>reactive({})</code> function</li>
+<li><em>Reactive function</em> is a bad synonym of <em>reactive conductor</em>: similarly to a regular R function,  <code>reactive({})</code> returns a value, but it does not work like a function</li>
+</ul>
+
+</div>
+<div style='float:right;width:53%;'>
+  <ul>
+<li><em>Illustration</em>: consider an <strong>inefficient</strong> algorithm calculating the Fibonacci numbers: </li>
+</ul>
+
+<pre><code class="r"># Calculate nth number in Fibonacci sequence
+fib &lt;- function(n) {
+    ifelse(n &lt; 3, 1, fib(n - 1) + fib(n - 2))
+}
+</code></pre>
+
+<p>Example for \(n=26\,\): </p>
+
+<pre><code class="r">fib(20)
+</code></pre>
+
+<pre><code>## [1] 6765
+</code></pre>
+
+<p>the computation is slow:</p>
+
+<pre><code class="r">system.time(fib(20))
+</code></pre>
+
+<pre><code>##    user  system elapsed 
+##    0.13    0.00    0.13
+</code></pre>
+
+</div>
+<div style='clear:both'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Shiny: Reactive Programming Advanced (3/5)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Let&#39;s make an app returning the n-th Fibonacci number and its inverse:</p>
+
+<div style='float:left;width:56%;'>
+  <p><strong>server.R</strong></p>
+
+<pre><code class="r" style="font-size:79%"># Calculate nth number in Fibonacci sequence
+fib <- function(n) ifelse(n<3, 1, fib(n-1)+fib(n-2))
+
+shinyServer(function(input, output) {
+  output$nthValue    <- renderText({ fib(input$n) })
+  output$nthValueInv <- renderText({ 1/fib(input$n) })
+})
+</code></pre>
+
+</div>
+<div style='float:right;width:43%;'>
+  <p><strong>ui.R</strong></p>
+
+<pre><code class="r" style="font-size:80%">sidebarPanel(
+  numericInput("n", "Enter n:", value=6) 
+),
+mainPanel(
+  h3("n-th Fibonacci number:"),
+  textOutput("nthValue"),
+  br(),
+  h3("inverse n-th Fibonacci number:"),
+  textOutput("nthValueInv")
+)
+</code></pre>
+
+</div>
+<div style='clear:both'>
+  <div class="row-fluid">
+  <div class="span4">
+    <form class="well">
+      <label for="n">Enter n:</label>
+      <input id="n" type="number" value="6"/>
+    </form>
+  </div>
+  <div class="span8">
+    <h3>n-th Fibonacci number:</h3>
+    <div id="nthValue" class="shiny-text-output"></div>
+    <br/>
+    <h3>inverse n-th Fibonacci number:</h3>
+    <div id="nthValueInv" class="shiny-text-output"></div>
+  </div>
+</div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>Shiny: Reactive Programming Advanced (4/5)</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <ul>
+<li>The graph of the current app is: </li>
+</ul>
+
+<p><img alt="Reactive conductor" src="assets/img/reactivity_diagrams/fib_no_conductor.png" width="95%"></p>
+
+<ul>
+<li>The <code>fib()</code> function is run twice:  each reactive endpoint executes <code>fib()</code> whenever it reacts</li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>With a reactive conductor we can run <code>fib()</code>  no more times than is absolutely necessary:</p>
+
+<p><img alt="Reactive conductor" src="assets/img/reactivity_diagrams/conductor.png" width="95%"></p>
+
+<p>How ? </p>
+
+<ul>
+<li><p>by  executing <code>fib(input$n)</code> in the reactive conductor </p></li>
+<li><p>and getting the reactive conductor output in the reactive endpoints</p></li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>Shiny: Reactive Programming Advanced (5/5)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>old server.R :</strong></p>
+
+<pre><code class="r" style="font-size:80%"># Calculate nth number in Fibonacci sequence
+fib <- function(n) ifelse(n<3, 1, fib(n-1)+fib(n-2))
+
+shinyServer(function(input, output) {
+  output$nthValue    <- renderText({ fib(input$n) })
+  output$nthValueInv <- renderText({ 1/fib(input$n) })
+})
+</code></pre>
+
+<p><strong>new server.R :</strong></p>
+
+<pre><code class="r" style="font-size:80%"># Calculate nth number in Fibonacci sequence
+fib <- function(n) ifelse(n<3, 1, fib(n-1)+fib(n-2))
+
+shinyServer(function(input, output) {
+  getFib <- reactive({ fib(input$n) })
+  output$nthValue <- renderText({ getFib() })
+  output$nthValueInv <- renderText({ 1 / getFib() })
+})
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>Other Important Shiny Components and Features</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p><code>DataTables()</code> Javascript table for plotting large data sets with search function and more</p></li>
+<li><p><code>rCharts</code> Interface to interactive Javascript graphic libraries</p></li>
+<li><p><code>conditionalPanel()</code> in <strong>ui.R</strong>: to hide/unhide something in the UI</p></li>
+<li><p><code>observe({})</code>: this is like <code>reactive({})</code>, but does not return anything </p></li>
+<li><p><code>updateXXXInput()</code> in <strong>server.R</strong>: to change the value of the input (<code>updateNumericInput</code>, <code>updateTextInput</code>, ...) </p></li>
+<li><p><code>reactiveValues()</code> in <strong>server.R</strong>: similar to a list, but to store reacting values</p></li>
+<li><p>the <code>shinyIncubator</code> package: unofficial add-ons for Shiny</p></li>
+<li><p><code>session</code> variable in <strong>server.R</strong>: information about the client, e.g. monitor resolution, session id, browser,...</p></li>
+<li><p>Build your own input &amp; output bindings for interaction with javascript code</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>Live Demonstrations</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><br></p>
+
+<ul>
+<li><p>Multipage app for survival analysis of a cancer database</p></li>
+<li><p>Bioconductor Project (google summer of Code 2013)</p></li>
+<li><p>Dashboard</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>Sharing your App</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><br></p>
+
+<ul>
+<li><p>Github</p></li>
+<li><p>Package - Shiny application in inst directory</p></li>
+<li><p><a href="https://rstudio.wufoo.com/forms/shiny-server-beta-program/">Rstudio Hosted Server</a></p></li>
+<li><p>Self Hosted Shiny Server, e.g. Amazon EC2 or own Linux Server</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Acknowledgement</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><br></p>
+
+<ul>
+<li><p><a href="http://www.rstudio.com/">RStudio Team</a> - All the great work they are doing with R</p></li>
+<li><p><a href="https://github.com/stla">St&eacute;phane Laurent</a> and <a href="https://github.com/xiaodaigh">Dai ZJ</a> - this presentation is adapted from them</p></li>
+<li><p>R users in the google Shiny user group</p></li>
+<li><p><a href="https://github.com/ramnathv">Ramnath Vaidyanathan</a> for the <code>slidify</code> and <code>rCharts</code> package</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>Questions?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center></p>
+
+<div style="float:center;width=355px;">
+  <img src="assets/img/Question.jpg">
+</div>
+
+<p></center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Agenda'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Introduction: About'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title=''>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Introduction: Resources'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Showcase: Simple Example'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Shiny: Structure'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Shiny: Structure'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Shiny: Build-in Widgets'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Shiny: Making an App (1/3)'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Shiny: Making an App (2/3)'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Shiny: Making an App (2/3)'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Shiny: Making an App (3/3)'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Shiny: Reactive Programming'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Shiny: Reactive Programming'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Shiny: Reactive Programming'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Shiny: Reactive Programming'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Shiny: Reactive Programming Advanced (1/5)'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Shiny: Reactive Programming Advanced (2/5)'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Shiny: Reactive Programming Advanced (3/5)'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Shiny: Reactive Programming Advanced (4/5)'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Shiny: Reactive Programming Advanced (5/5)'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Other Important Shiny Components and Features'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Live Demonstrations'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Sharing your App'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Acknowledgement'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Questions?'>
+         26
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="libraries/widgets/quiz/js/jquery-1.7.min.js"></script>
+<script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/interactive/js/ace/js/ace.js"></script>
+<script src="libraries/widgets/interactive/js/interactive.js"></script>
+
+  <script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  <script src='/quiz/js/jquery.quiz.js'></script>
+  <script src='/quiz/js/mustache.min.js'></script>
+  <script type="text/javascript">
+   $('.quiz').find('li:has(em)').addClass('quiz-answer')
+   $('li.quiz-answer em').replaceWith(function(){
+     return $(this).contents()
+   })
+   $('.quiz').find('li').addClass('quiz-option')
+   $.quiz();
+  </script>
+  <script src="shared/shiny.js" type="text/javascript"></script>
+  <script src="shared/slider/js/jquery.slider.min.js"></script>
+  <script src="shared/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="shared/slider/css/jquery.slider.min.css"></link>
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

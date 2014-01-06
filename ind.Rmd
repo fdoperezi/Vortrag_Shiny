@@ -1,0 +1,241 @@
+---
+  title       : Prädiktive Modellierung mit R
+subtitle    : Ein Statistik, Analyse und Visualisierungswerkzeug
+author      : Dr. Simon Müller
+job         : www.muon-stat.com
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow
+widgets     : [bootstrap, interactive, shiny]
+ext_widgets: {rCharts: [libraries/nvd3]}
+mode        : selfcontained # {standalone, draft}
+url: {lib: libraries}
+
+--- 
+  
+  
+  
+  ## Agenda
+  - Einführung
+- Was ist R?
+- Funktionalität von R
+- Pakete & Themenfelder (Task Views)
+- Gemeinschaft
+- Visualisierung
+- Interaktive Webanwendungen & automatisierte Reports
+- Big Data
+- Prädiktive Modellierung mit R
+- Das Caret-Paket (Kurzform von: Classification and Regression Training)
+- Fallbeispiel: Churn-Prevention 
+
+---
+  
+  
+  
+  ## Einführung
+  
+  - Über mich
+======================================
+  <br>
+  Simon Müller - (Dipl.-Math. und Promotion in Stochastik)
+
+<br>
+  
+  - About our Project  
+=======================================
+  <br>
+  Seit 2012 Biostatistiker am Dr. Margarete Fischer-Bosch Institut für klinische Pharmakologie
+
+Seit 2012 Selbständiger statistischer Berater
+
+---
+  
+  
+  
+  ## Was ist <img src="assets/img/Rlogo.jpg" alt="R" title="R"width= "50" height = "50">?
+  Definition
+====================================================
+  "R is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS" - **The R Project Organisation**
+  - Programmiersprache und Umgebung für statistische Berechnungen und Grafikerstellung
+- Basierend auf der kommerziellen Statistik-Sprache **S-Plus** - mittlerweile im Besitz von [TIBCO](http://www.tibco.com/)
+- Eleganz - Eine Sprache von Statistiker für Statistiker entwickelt <br>
+  
+  --- 
+  
+  
+  
+  ## Was ist <img src="assets/img/Rlogo.jpg" alt="R" title="R"width= "50" height = "50">??
+  Warum R?
+====================================================
+  - Freie und offene Software - Statistische Methoden müssen nicht neu implementiert werden
+- R ist eine Programmiersprache - Reproduzierbarkeit der Analysen, Flexibilität,...
+- Grafik und Daten-Visualisierung
+- plattformunabhängig (Unix, Mac OS X und Windows)
+- Eine sehr gute internet-basierte Paket-Verwaltung
+- Neue statistische Methoden sind in R häufig zuerst implementiert 
+- Häufige Releases der Kern-Software, wie auch der Pakete
+- Hilfsbereite und dynamische Gemeinschaft (Mailing-Listen, [Stackoverflow](http://stackoverflow.com/), [Blogs](http://www.r-bloggers.com/)); Schätzungen gehen von 250.000 bis 2 Millionen Nutzern aus.
+
+---  
+  
+  
+  
+  ## Was ist <img src="assets/img/Rlogo.jpg" alt="R" title="R"width= "50" height = "50">?
+  Pakete
+====================================================
+  <div width="375">
+  <div style="float:right;width=350px;margin-right=10px">
+  <img src="assets/img/fig_10_cran1.png" alt="http://r4stats.com/2013/03/19/r-2012-growth-exceeds-sas-all-time-total/" title= "http://r4stats.com/2013/03/19/r-2012-growth-exceeds-sas-all-time-total/" width= "350" height = "300" >
+  </div>
+  </div>
+  - Die Grundfunktionalität von R kann durch **Pakete** um weitere statistische Methoden, 
+grafische Ausgaben, Datenbankanbindungen, Reporting-Werkzeuge uvm., durch den Nutzer erweitert werden
+- Zur Zeit existieren über 5.000 Pakete
+- Oft existieren mehrere Pakete zu einem Typ
+- More than one package for one type of Analytical Task
+- Die Wahrscheinlichkeit ist hoch, dass ein benötigter Algorithmus bereits implementiert und öffentlich hinterlegt ist 
+- Eigene Algorithmen können in Paketen zusammengefasst werden
+
+
+Quelle: [Muenchen, Robert A, The Popularity of Data Analysis Software.](http://r4stats.com/articles/popularity/), Retrieved 8/15/2013
+
+---
+  
+  
+  
+  ## Funktionalität von <img src="assets/img/Rlogo.jpg" alt="R" title="R"width= "50" height = "50">?
+  R Themenbereiche (Task Views) 
+====================================================
+  
+  <iframe src="http://cran.r-project.org/web/views/" style="min-height: 700px; min-width: 950px;"></iframe>
+  
+  <supersub> Quelle: [R-Projekt](http://cran.r-project.org/web/views/)
+
+---
+  
+  
+  
+  ## Funktionalität von <img src="assets/img/Rlogo.jpg" alt="R" title="R"width= "50" height = "50">?
+  Visualisierung 
+====================================================
+  <div width="1100px">
+  <div style="float:left;width=630px;">
+  <img src= "assets/img/MiguelRios_Europe.jpg" width= "625" height = "475" >
+  </div> 
+  <div style="float:left;width=10px;">
+  </div> 
+  <div style="float:left;width=355px;">
+  <img src= "assets/img/Arbeitslosenzahlen.png" width= "350" height = "475" >
+  </div>
+  </div>
+  <supersub> Quelle: [Twitter Blog](https://blog.twitter.com/2013/the-geography-of-tweets), 
+[ggplot2](http://ggplot2.org/), Arbeitslosenzahlen-Daten: [flowingdata](http://flowingdata.com/)
+
+---  
+  
+  
+  
+  <style>.rChart{width: 1000px; height: 650px}</style>
+  ## Funktionalität von <img src="assets/img/Rlogo.jpg" alt="R" title="R"width= "50" height = "50">?
+  Visualisierung - Interaktiv
+====================================================
+  <br>
+  ```{r echo = F, results = 'asis', comment=NA, cache = F}
+require(rCharts)
+
+haireye = as.data.frame(HairEyeColor)
+n1 <- nPlot(Freq ~ Hair, group = 'Eye', type = 'multiBarChart',
+            data = subset(haireye, Sex == 'Male')
+)
+n1$print('chart1')
+```
+
+---  
+  
+  
+  
+  ## Funktionalität von <img src="assets/img/Rlogo.jpg" alt="R" title="R"width= "50" height = "50">?
+  Interaktive Webanwendungen
+====================================================
+  ```{r opts.label = 'shiny'}
+slidifyUI(
+  sidebarPanel(
+    selectInput('sex', 'Choose Sex', c('Male', 'Female')),
+    selectInput('type', 'Choose Type',
+                c('multiBarChart', 'multiBarHorizontalChart')
+    )
+  ),
+  mainPanel(
+    tags$div(id = 'nvd3plot', class='shiny-html-output nvd3 rChart')
+  )
+)
+```
+--- 
+  
+  
+  
+  ## Funktionalität von <img src="assets/img/Rlogo.jpg" alt="R" title="R"width= "50" height = "50">?
+  Automatisierte Reports
+====================================================
+  <div style="float:left;width=355px;">
+  <img src= "assets/img/reporting.png" width= "500" height = "450" >
+  </div>
+  
+  - Automatisierung des Analyse für:
+  - Forschungsberichte
+- Automatische Berichterstellung (Monats-, Quartals- bzw. Jahresberichte)
+- Strikt Trennung Arbeitsbereiche: <br>**Daten - Analyse - Layout**  
+  - Reproduzierbarkeit
+- Gängige Ausgabeformate: PDF, html, Excel, Word
+
+---
+  
+  
+  
+  ## Funktionalität von <img src="assets/img/Rlogo.jpg" alt="R" title="R"width= "50" height = "50">?
+  Big Data
+====================================================
+  <img src= "assets/img/R for Big Data.png" width= "1000" height = "425" >
+  
+  ---
+  
+  
+  
+  ## Funktionalität von <img src="assets/img/Rlogo.jpg" alt="R" title="R"width= "50" height = "50">?
+  Big Data - Echtzeitanalysen
+====================================================
+  <div style="width=750;">
+  <img src= "assets/img/exasol Mindmap.png" width= "1000" height = "240" >
+  </div>
+  <br>
+  
+  - Eigenschaft von Exasol-DB
+
+---  
+  
+  
+  
+  ## Einschränkungen
+  
+  - Syntax basiert <br>
+  - Ausweg - IDEs: R Studio, Revolution Analytics und - GUI: Deducer and R Commander
+- Man behält immer die Kontrolle über die Abläufe; die Lernkurve ist allerdings steil
+```{r eval=FALSE, results='hide'}
+ggplot(unemployment, aes(x=Year, y=Value)) + 
+  geom_point(colour="maroon", size=4, alpha=0.5) + 
+  ylab("") + xlab("\n Jahr") + ggtitle("Arbeitslosenrate USA\n") + 
+  theme(panel.grid.major.x=element_blank(),
+        axis.line=element_blank(),
+        panel.grid.minor=element_blank(),
+        panel.grid.major.y=element_line(linetype='dashed', size=.75, colour='grey'),
+        axis.ticks.y=element_blank()) + 
+  scale_y_continuous(labels = percent_format(), limits=c(0, .12)) +
+  geom_smooth(se=FALSE, size=1.5, colour="steelblue")
+```
+- Beschränkter kommerzielle Unterstützung:
+  - Enterprise Dienstleistungen: [Revolution R](http://www.revolutionanalytics.com/)
+- teils mangelnde Dokumentation
+- Qualität der Pakete: schlecht bis sehr gut (Tasks Views)
+- Acceptance limited because of limited understanding - e.g., Pfizer
+
+
